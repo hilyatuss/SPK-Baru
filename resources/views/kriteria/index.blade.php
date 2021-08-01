@@ -112,51 +112,15 @@
 															<label>Range <span class="text-danger">*</span></label>
 															<?php
 																$range = DB::table('tb_range')->where('kode_kriteria', '=', $row->kode_kriteria)->get();
-																$toEnd = count($range);
-																foreach($range as $col){
-																	if (0 == --$toEnd) { ?>
-																		<div class="input-group control-group after-add-more2" style="margin-top:10px">
-																			<input type="text" autocomplete="off" name="range[]" value="{{ old('range', $col->range) }}" class="form-control" placeholder="Masukkan Data Range" value="{{ old('range') }}">
-																			<input type="text" autocomplete="off" name="nilai[]" value="{{ old('nilai', $col->nilai) }}" class="form-control" placeholder="Masukkan Nilai" value="{{ old('nilai') }}">
-																			<div class="input-group-btn"> 
-																				<button class="btn btn-danger remove2" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-																				<button class="btn btn-success add-more2" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>
-																			</div>
-																		</div>
-															<?php }else{?>
-																		<div class="input-group control-group after-add-more2" style="margin-top:10px">
-																			<input type="text" autocomplete="off" name="range[]" value="{{ old('range', $col->range) }}" class="form-control" placeholder="Masukkan Data Range" value="{{ old('range') }}">
-																			<input type="text" autocomplete="off" name="nilai[]" value="{{ old('nilai', $col->nilai) }}" class="form-control" placeholder="Masukkan Nilai" value="{{ old('nilai') }}">
-																			<div class="input-group-btn"> 
-																				<button class="btn btn-danger remove2" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-																			</div>
-																		</div>
-																<?php }
-																} 
-															?>
+																foreach($range as $col){ ?>
+																	<div class="input-group control-group after-add-more2" style="margin-top:10px">
+																		<input type="text" autocomplete="off" name="range[]" value="{{ old('range', $col->range) }}" class="form-control" placeholder="Masukkan Data Range" value="{{ old('range') }}">
+																		<label> : </label>
+																		<input type="text" autocomplete="off" name="nilai[]" value="{{ old('nilai', $col->nilai) }}" class="form-control col-1" placeholder="Masukkan Nilai" value="{{ old('nilai') }}">
+																	</div>
+															<?php } ?>
 															<div class="last"></div>
 														</div>
-													
-													
-													<script type="text/javascript">
-														$(document).ready(function() {
-															$(".add-more2").click(function(){ 
-																var html = '<div class="input-group control-group after-add-more2" style="margin-top:10px">'+
-																		'<input type="text" autocomplete="off" name="range[]" value="" class="form-control" placeholder="Masukkan Data Range" >' +
-																		'<input type="text" autocomplete="off" name="nilai[]" value="" class="form-control" placeholder="Masukkan Nilai">' +
-																		'<div class="input-group-btn"> ' +
-																			'<button class="btn btn-danger remove2" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>' +
-																			'<button class="btn btn-success add-more2" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>' +
-																		'</div>' +
-																	'</div>'+
-																'</div>';
-																$(".last").before(html);
-															});
-															$("body").on("click",".remove2",function(){ 
-																$(this).parents(".control-group").remove();
-															});
-														});
-													</script>
 												</div>
 											</div>
 										</div>

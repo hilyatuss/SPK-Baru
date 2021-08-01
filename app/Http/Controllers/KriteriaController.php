@@ -142,19 +142,21 @@ class KriteriaController extends Controller
             'atribut' => $request->atribut,
             'bobot' =>  $request->bobot
         ));
-        // DB::table('tb_range')->where(['kode_kriteria'=>$request->kode_kriteria])->delete();
-        // DB::table('tb_range')->where('kode_kriteria', '=', $request->kode_kriteria)->delete();
+
+        // DB::table('tb_range')->where(['kode_kriteria' => $request->kode_kriteria])->delete();
         // DB::table('tb_range')->where('id', '=', $request->id)->delete();
 
+        $range = DB::table('tb_range')->where(['kode_kriteria' => $request->kode_kriteria])->get();
         foreach($request->range as $key => $row){
-            DB::table('tb_range')->insert(array(
+            DB::table('tb_range')->where(array('id' => $range[$key]->id))
+            ->update(array(
                 'kode_kriteria' => $request->kode_kriteria,
                 'range' => $row,
                 'nilai' => $request->nilai[$key]
             ));
-            
         }
         
+
         return redirect('kriteria')->with('message', 'Data berhasil diubah!');
     }
 
