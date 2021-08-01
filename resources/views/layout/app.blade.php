@@ -149,7 +149,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item" {{ is_hidden('home') }}>
-                            <a href="{{ route('home') }}" class="nav-link {{ isActive('home') }}">
+                            <a href="{{ route('home') }}" class="nav-link {{ set_active('home') }}">
                                 <i class="nav-icon fas fa-th text-primary"></i>
                                 <p>
                                     Home
@@ -157,7 +157,7 @@
                             </a>
                         </li>
                         <li class="nav-item" {{ is_hidden('user.index') }}>
-                            <a href="{{ route('user.index') }}" class="nav-link {{isActive('user.index')}}">
+                            <a href="{{ route('user.index') }}" class="nav-link {{ set_active('user.index') }}">
                                 <i class="nav-icon fas fa-users text-primary"></i>
                                 <p>
                                     User
@@ -165,7 +165,7 @@
                             </a>
                         </li>
                         <li class="nav-item" {{ is_hidden('periode.index') }}>
-                            <a href="{{ route('periode.index') }}" class="nav-link {{isActive('home')}}">
+                            <a href="{{ route('periode.index') }}" class="nav-link {{ set_active('periode.index') }}">
                                 <i class="nav-icon far fa-clock text-primary"></i>
                                 <p>
                                     Periode Beasiswa
@@ -173,23 +173,23 @@
                             </a>
                         </li>
                         <li class="nav-item" {{ is_hidden('kriteria.index') }}>
-                            <a href="{{ route('kriteria.index') }}" class="nav-link {{isActive('kriteria.index')}}">
+                            <a href="{{ route('kriteria.index') }}" class="nav-link {{ set_active('kriteria.index') }}">
                                 <i class="nav-icon far fa-edit text-primary"></i>
                                 <p>
                                     Data Kriteria
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item" {{ is_hidden('alternatif.index') }}>
-                            <a href="{{ route('alternatif.index') }}" class="nav-link {{isActive('alternatif.index')}}">
-                                <i class="nav-icon far fa-circle text-primary"></i>
+                        <li class="nav-item" {{ is_hidden('data_mahasiswa.index') }}>
+                            <a href="{{ route('data_mahasiswa.index') }}" class="nav-link {{ set_active(['data_mahasiswa.index', 'dataPerPeriode']) }}">
+                                <i class="nav-icon far fa-user text-primary"></i>
                                 <p>
                                     Data Mahasiswa
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item" {{ is_hidden('rel_alternatif.index') }}>
-                            <a href="{{ route('rel_alternatif.index') }}" class="nav-link {{isActive('rel_alternatif.index')}}">
+                        <li class="nav-item" {{ is_hidden('nilai_mahasiswa.index') }}>
+                            <a href="{{ route('nilai_mahasiswa.index') }}" class="nav-link {{ set_active('nilai_mahasiswa.index') }}">
                                 <i class="nav-icon fas fa-chart-pie text-primary"></i>
                                 <p>
                                     Nilai Mahasiswa
@@ -197,7 +197,7 @@
                             </a>
                         </li>
                         <li class="nav-item" {{ is_hidden('hitung.index') }}>
-                            <a href="{{ route('hitung.index') }}" class="nav-link {{isActive('hitung.index')}}">
+                            <a href="{{ route('hitung.index') }}" class="nav-link {{ set_active(['hitung.index', 'hitungPerPeriode']) }}">
                                 <i class="nav-icon far fa-copy text-primary"></i>
                                 <p>
                                     Hasil Perhitungan
@@ -205,7 +205,7 @@
                             </a>
                         </li>
                         <li class="nav-item" {{ is_hidden('mahasiswa.create') }}>
-                            <a href="{{ route('mahasiswa.create') }}" class="nav-link {{isActive('mahasiswa.create')}}">
+                            <a href="{{ route('mahasiswa.create') }}" class="nav-link {{ set_active('mahasiswa.create') }}">
                                 <i class="nav-icon far fa-copy text-primary"></i>
                                 <p>
                                     Daftar Beasiswa Bidikmisi

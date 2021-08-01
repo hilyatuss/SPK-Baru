@@ -18,20 +18,21 @@ function is_able($action)
             'user.index', 'user.create', 'user.store', 'user.edit', 'user.update', 'user.destroy',
             'user.password', 'user.password.update', 'user.logout', 'user.profil', 'user.profil.update',
             // 'kriteria.index', 'kriteria.create', 'kriteria.store', 'kriteria.edit', 'kriteria.update', 'kriteria.destroy',
-            // 'alternatif.index', 'alternatif.create', 'alternatif.store', 'alternatif.edit', 'alternatif.update', 'alternatif.destroy', 'alternatif.cetak',
-            // 'rel_alternatif.index', 'rel_alternatif.edit', 'rel_alternatif.update',
+            // 'data_mahasiswa.index', 'data_mahasiswa.create', 'data_mahasiswa.store', 'data_mahasiswa.edit', 'data_mahasiswa.update', 'data_mahasiswa.destroy', 'data_mahasiswa.cetak',
+            // 'nilai_mahasiswa.index', 'nilai_mahasiswa.edit', 'nilai_mahasiswa.update',
             // 'hitung.index', 'hitung.cetak',
         ],
         'pegawai' => [
             'home',
             'user.password', 'user.password.update', 'user.logout', 'user.profil', 'user.profil.update',
-            'user.index', 'user.create', 'user.store', 'user.edit', 'user.update', 'user.destroy',
+            // 'user.index', 'user.create', 'user.store', 'user.edit', 'user.update', 'user.destroy',
             'periode.index', 'periode.cetak', 'periode.create', 'periode.store', 'periode.edit', 'periode.update', 'periode.destroy',
             'kriteria.index', 'kriteria.cetak', 'kriteria.create', 'kriteria.store', 'kriteria.edit', 'kriteria.update', 'kriteria.destroy',
-            'alternatif.index', 'alternatif.cetak', 'alternatif.create', 'alternatif.store', 'alternatif.edit', 'alternatif.update', 'alternatif.destroy',
-            'rel_alternatif.index', 'rel_alternatif.cetak', 'rel_alternatif.edit', 'rel_alternatif.update',
-            'hitung.index', 'hitung.cetak',
-            'mahasiswa.index', 'mahasiswa.create', 'mahasiswa.store',
+            'data_mahasiswa.index', 'data_mahasiswa.cetak', 'data_mahasiswa.create', 'data_mahasiswa.store', 'data_mahasiswa.edit', 'data_mahasiswa.update', 'data_mahasiswa.destroy',
+            'nilai_mahasiswa.index', 'nilai_mahasiswa.cetak', 'nilai_mahasiswa.edit', 'nilai_mahasiswa.update',
+            'hitung.index', 'hitung.cetak', 'hitung.kriteria', 'hitung.mahasiswa', 'hitung.normalisasi', 'hitung.perangkingan',
+            // 'mahasiswa.index', 'mahasiswa.create', 'mahasiswa.store',
+            'pegawai.information', 'dataPerPeriode', 'cetakPerPeriode', 'hitungPerPeriode', 'cetakHitungPerPeriode'
         ],
         'mhs' => [
             'home',
@@ -255,8 +256,20 @@ function query($sql, $params = [])
     return DB::statement($sql, $params);
 }
 
-function isActive($path, $class = 'active'){
-    return Request::is($path) ? $class :  '';
+function set_active($route)
+{
+    $active = 'active';
+    if(is_array($route)) {
+        foreach ($route as $r) {
+            if(Route::is($r)){
+                return $active;
+            }
+        }
+    } else {
+        if(Route::is($route)){
+            return $active;
+        }
+    }
 }
 
 // function get_desa_option($selected = '', $id_kecamatan)

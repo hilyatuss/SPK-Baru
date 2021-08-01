@@ -128,7 +128,7 @@
         </table>
     </div>
     <div class="card-footer">
-        <a class="btn btn-info" href="{{ route('hitung.cetak') }}" target="_blank"><span class="fa fa-print"></span> Cetak</a>
+        <a class="btn btn-info" href="{{ route('cetakHitungPerPeriode', request()->segment(count(request()->segments())) ) }}" target="_blank"><span class="fa fa-print"></span> Cetak</a>
     </div>
 </div>
 

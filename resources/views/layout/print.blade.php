@@ -48,7 +48,7 @@
 <body onload="window.print()">
 
     <section class="content">
-        <h1>KEMENTERIAN PENDIDIKAN, KEBUDAYAAN</h1>
+        <h1>KEMENTERIAN PENDIDIKAN, KEBUDAYAAN,</h1>
         <h1>RISET, DAN TEKNOLOGI</h1>
         <h1><b>POLITEKNIK NEGERI MADIUN</b></h1>
         <hr size="5px" width="100%" color="black">
@@ -58,10 +58,9 @@
         </section>
     <section class="content footer">
         <p>Madiun, {{ $tgl }}</p>
-        <p>a.n Direktur</p>
-        <p>Wakil Direktur III</p>
-        <p style="margin-top:100px;"><u><b>Prasetyo Yekti Utomo, S.E., M.M.</b></u></p>
-        <p>NIDN : 0712107001</p>
+        <p>Wakil Direktur 3,</p>
+        <p style="margin-top:100px;"><u><b>Fredy Susanto,S.Pd., M.Pd.</b></u></p>
+        <p>NIDN . 0722088101</p>
     </section>
 
 </body>

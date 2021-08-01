@@ -11,7 +11,7 @@ class AlternatifController extends Controller
 {
     public function cetak()
     {
-        $data['title'] = 'Laporan Data Alternatif';
+        $data['title'] = 'Laporan Data Mahasiswa';
         $data['rows'] = Alternatif::orderBy('nim')->get();
         $data['tgl'] = Carbon::now()->locale('id')->isoFormat('LL');
         return view('alternatif.cetak', $data);
@@ -128,7 +128,7 @@ class AlternatifController extends Controller
         $alternatif->prodi = $request->prodi;
         $alternatif->semester = $request->semester;
         $alternatif->save();
-        return redirect('alternatif')->with('message', 'Data berhasil diubah!');
+        return redirect('data_mahasiswa')->with('message', 'Data berhasil diubah!');
     }
 
     /**
@@ -143,6 +143,28 @@ class AlternatifController extends Controller
         DB::table('tb_rel_mahasiswa')->where('nim', $alternatif->nim)->delete();
         Alternatif::where('nim', $alternatif->nim)->delete();
 
-        return redirect('alternatif')->with('message', 'Data berhasil dihapus!');
+        return redirect('data_mahasiswa')->with('message', 'Data berhasil dihapus!');
     }
+    public function dataPerPeriode(Request $request, $periode_id){
+        $periode = DB::table('tb_periode')->where(['id' => $periode_id])->first();
+
+        $data['q'] = $request->input('q');
+        $data['title'] = 'Data Mahasiswa '.$periode->nama_periode;
+        $data['limit'] = 10;
+        $data['rows'] = Alternatif::where('periode_id', '=', $periode_id)
+            ->where('nama_mahasiswa', 'like', '%' . $data['q'] . '%')
+            ->orderBy('nama_mahasiswa')
+            ->paginate($data['limit'])->withQueryString();
+
+        return view('alternatif.indexPeriode', $data);
+    }
+    public function cetakPerPeriode($periode_id)
+    {
+        $periode = DB::table('tb_periode')->where(['id' => $periode_id])->first();
+        $data['title'] = 'Laporan Data Mahasiswa '.$periode->nama_periode;
+        $data['rows'] = Alternatif::where(['periode_id' => $periode_id])->orderBy('nim')->get();
+        $data['tgl'] = Carbon::now()->locale('id')->isoFormat('LL');
+        return view('alternatif.cetak', $data);
+    }
+
 }

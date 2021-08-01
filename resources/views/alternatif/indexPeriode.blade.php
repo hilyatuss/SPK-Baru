@@ -15,7 +15,7 @@
 				<a class="btn btn-primary" href="{{ route('data_mahasiswa.create') }}"><i class="fa fa-plus"></i> Tambah</a>
 			</div> -->
 			<div class="form-group mr-1" {{ is_hidden('data_mahasiswa.cetak') }}>
-				<a class="btn btn-default" href="{{ route('data_mahasiswa.cetak') }}" target="_blank"><span class="fa fa-print"></span> Cetak</a>
+				<a class="btn btn-default" href="{{ route('cetakPerPeriode', request()->segment(count(request()->segments())) ) }}" target="_blank"><span class="fa fa-print"></span> Cetak</a>
 			</div>
 		</form>
 	</div>

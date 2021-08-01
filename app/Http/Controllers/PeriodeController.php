@@ -52,7 +52,7 @@ class PeriodeController extends Controller
 
         // $periode = new Periode($request->all());
         // $periode->save();
-        $tahun = explode("-", $request->selesai);
+        $tahun = explode("-", $request->mulai);
         Periode::insert(array('nama_periode' => 'Periode tahun '.$tahun[0],'mulai' => $request->mulai, 'selesai' => $request->selesai));
 
         return redirect('periode')->with('message', 'Data berhasil ditambah!');
